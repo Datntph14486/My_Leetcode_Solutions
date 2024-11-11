@@ -6,12 +6,9 @@
 
 var findMedianSortedArrays = function (nums1, nums2) {
     const toltalLength = nums1.length + nums2.length;
-
     let x = 0;
     let y = 0;
-
     const mergedArr = [];
-
     for (let i = 0; i < toltalLength; i++) {
         if (x > nums1.length - 1) {
             nums2.splice(0, y);
