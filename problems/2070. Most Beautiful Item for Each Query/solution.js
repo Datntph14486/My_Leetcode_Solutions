@@ -14,7 +14,7 @@ var maximumBeauty = function (items, queries) {
         for (let j = 0; j < items.length; j++) {
             const currentBeauty = items[j];
 
-            if (currentBeauty[0] <= queries[i] && currentBeauty[1] > beauty) {
+            if (currentBeauty[0] <= queries[i]) {
                 beauty = currentBeauty[1];
                 break;
             }
