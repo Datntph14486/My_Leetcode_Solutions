@@ -25,6 +25,7 @@ var spiralOrder = function (matrix) {
         // thêm phần tử
         result.push(matrix[row][column]);
 
+        // trả về đủ phần tử
         if (result.length == matrix[0].length * matrix.length) {
             return result;
         }
@@ -32,6 +33,7 @@ var spiralOrder = function (matrix) {
         switch (direction) {
             case 1:
                 if (column == store[1]) {
+                    //  chạm điểm chặn bên phải: chuyển hướng đi xuống, lùi điểm chặn xuống 1
                     store[1]--;
                     direction++;
                     row++;
@@ -41,6 +43,7 @@ var spiralOrder = function (matrix) {
                 break;
             case 2:
                 if (row == store[2]) {
+                    // chạm điểm chặn đi xuống: chuyển hướng sang trái, lùi điểm chặn xuống 1;
                     store[2]--;
                     direction++;
                     column--;
@@ -50,6 +53,7 @@ var spiralOrder = function (matrix) {
                 break;
             case 3:
                 if (column == store[3]) {
+                    // chạm điểm chặn sang trái: chuyển hướng đi lên, tăng điểm chặn lên 1
                     store[3]++;
                     direction++;
                     row--;
@@ -59,6 +63,7 @@ var spiralOrder = function (matrix) {
                 break;
             case 4:
                 if (row == store[4]) {
+                    // chạm điểm chặn đi lên: chuyển hướng sang phải, tăng điểm chặn lên 1
                     direction = 1;
                     store[4]++;
                     column++;
