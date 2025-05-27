@@ -1,0 +1,78 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+var reverseBetween = function (head, left, right) {
+    let arr = [];
+    let subArr = [];
+
+    let index = 1;
+
+    let currentNode = head;
+
+    while (currentNode) {
+        if (!currentNode) {
+            break;
+        }
+
+        if (left <= index && index <= right) {
+            subArr.push(currentNode.val);
+
+            if (index == right) {
+                arr.push(subArr)
+            }
+        } else {
+            arr.push(currentNode.val)
+        }
+
+        index++;
+        currentNode = currentNode.next;
+    };
+
+    let result = null;
+    let currentNodeResult = null;
+
+    for (let i = 0; i < arr.length; i++) {
+
+        if (!Array.isArray(arr[i])) {
+            const newNode = new ListNode(arr[i]);
+
+            if (!result) {
+                result = newNode;
+                currentNodeResult = result;
+                continue;
+            } else {
+                currentNodeResult.next = newNode;
+                currentNodeResult = currentNodeResult.next;
+            };
+            continue;
+        }
+
+        arr[i].reverse();
+
+        for (let j = 0; j < arr[i].length; j++) {
+            const newNode = new ListNode(arr[i][j]);
+            if (!result) {
+                result = newNode;
+                currentNodeResult = result;
+                continue;
+            } else {
+                currentNodeResult.next = newNode;
+                currentNodeResult = currentNodeResult.next;
+            };
+
+        }
+    }
+
+    return result;
+
+};
