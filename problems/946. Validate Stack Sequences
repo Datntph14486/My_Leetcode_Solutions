@@ -1,0 +1,34 @@
+/**
+ * @param {number[]} pushed
+ * @param {number[]} popped
+ * @return {boolean}
+ */
+var validateStackSequences = function (pushed, popped) {
+
+    const stack = [];
+
+    for (let i = 0; i < pushed.length; i++) {
+        const item = pushed[i];
+
+        stack.push(item);
+
+        removeItemFromStack(stack, popped);
+
+    }
+
+    return stack.length == 0 ? true : false;
+};
+
+function removeItemFromStack(stack, popped) {
+    if (stack.length == 0) {
+        return;
+    }
+
+    if (stack[stack.length - 1] != popped[0]) {
+        return;
+    }
+    stack.pop();
+    popped.shift();
+
+    removeItemFromStack(stack, popped);
+}
