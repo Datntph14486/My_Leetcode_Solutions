@@ -1,0 +1,27 @@
+/**
+ * @param {number[][]} matrix
+ * @return {void} Do not return anything, modify matrix in-place instead.
+ */
+var rotate = function (matrix) {
+    let newArr = [];
+
+    // chuyển đổi cấu trúc
+    for (let i = 0; i < matrix[0].length; i++) {
+        const arr = [];
+
+        for (let j = matrix.length - 1; 0 <= j; j--) {
+            arr.push(matrix[j][i]);
+        };
+
+        newArr.push(arr);
+    }
+
+    // gán lại giá trị cho từng cell
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[0].length; j++) {
+            matrix[i][j] = newArr[i][j]
+        }
+    }
+
+
+}
